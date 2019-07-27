@@ -2,22 +2,22 @@ node("linux") {
   stage("git pull") {
     checkout scm
   }
-  stage(“parameters”) {
+  stage("parameters”) {
     properties([
       parameters([
         choice(
-          name: 'deploy',
-          description: 'Enable or disable deploy step.’,
-          choices: ['enabled', 'disabled']
+          name: "deploy",
+          description: "Enable or disable deploy step.",
+          choices: ["enabled", "disabled"]
         )
       ])
     ])
   }
   stage("deploy") {
-    if (deploy == “enabled”) {
-      build job: “devops-deploy-python”
+    if (deploy == "enabled”) {
+      build job: "devops-deploy-python”
     } else {
-      echo “Deploy is disabled. Skipping deployment”
+      echo "Deploy is disabled. Skipping deployment”
     }
   }
 }
