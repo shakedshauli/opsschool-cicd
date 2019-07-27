@@ -14,7 +14,7 @@ node("linux") {
     ])
   }
   stage("deploy") {
-    if (deploy == "enabled") {
+    if (params.deploy == "enabled") {
       build job: "devops-deploy-python"
     } else {
       echo "Deploy is disabled. Skipping deployment"
