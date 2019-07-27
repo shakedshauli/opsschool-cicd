@@ -20,7 +20,7 @@ node("linux") {
       } else {
         echo "Deploy is disabled. Skipping deployment"
       }
-    } catch Exception e {
+    } catch (Exception e) {
       echo "failed to deploy"
     }
   }
