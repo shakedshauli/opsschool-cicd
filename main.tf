@@ -60,19 +60,19 @@ resource "aws_key_pair" "jenkins_ec2_key" {
   public_key = file("jenkins_ec2_key.pub")
 }
 
-resource "aws_instance" "jenkins_master" {
+resource "aws_instance" "jenkins_server" {
   ami = "ami-07d0cf3af28718ef8"
   instance_type = "t3.micro"
   key_name = aws_key_pair.jenkins_ec2_key.key_name
 
   tags = {
-    Name = "Jenkins Master"
+    Name = "Jenkins Server"
   }
 
   security_groups = ["default", aws_security_group.jenkins.name]
 
   connection {
-    host = aws_instance.jenkins_master.public_ip
+    host = aws_instance.jenkins_server.public_ip
     user = "ubuntu"
     private_key = file("jenkins_ec2_key")
   }
