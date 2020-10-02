@@ -53,7 +53,7 @@ resource "aws_security_group" "jenkins" {
 }
 
 resource "aws_key_pair" "jenkins_ec2_key" {
-  key_name = "terraform_ec2_key"
+  key_name = "jenkins_ec2_key"
   public_key = file("jenkins_ec2_key.pub")
 }
 
