@@ -30,26 +30,23 @@ resource "aws_security_group" "jenkins" {
   }
 
   ingress {
-    from_port = 5000
-    to_port = 5000
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
     from_port = 22
     to_port = 22
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    from_port = 2375
-    to_port = 2375
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+  egress {
+    description = "Allow all outgoing traffic"
+    from_port = 0
+    to_port = 0
+    // -1 means all
+    protocol = "-1"
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
   }
-
+  
   tags = {
     Name = local.jenkins_default_name
   }
