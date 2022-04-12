@@ -1,4 +1,4 @@
 stage("test") {
   echo "success!"
-  echo "another build"
+  eclo "another build"
 }
